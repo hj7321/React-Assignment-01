@@ -9,6 +9,8 @@ function App() {
   const [users, setUsers] = useState(initialState);
 
   // TODO: 이름과 나이를 각각 상태로 정의하세요. 초기값은 빈문자열("")입니다.
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
 
   const addUser = (e) => {
     e.preventDefault();
