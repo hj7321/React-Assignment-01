@@ -22,9 +22,9 @@ function App() {
 
     // TODO: 사용자 리스트 상태를 업데이트 하세요. spread operator 를 사용하고, 추가되는 id는 현재 시간을 밀리초 단위로 반환하는 Date.now() 를 사용하세요.
     let newUser = { id: Date.now(), name, age: Number(age) };
-    setUsers([...initialState, newUser]);
-    // name = "";
-    // age = "";
+    setName("");
+    setAge("");
+    setUsers([...users, newUser]);
   };
 
   const removeUser = (id) => {
@@ -54,7 +54,7 @@ function App() {
       <ul>
         {/* TODO: map 메소드를 이용해서 user 리스트를 렌더링하세요.  */}
         {/* 이름: John, 나이: 20 [삭제] 버튼이 하나의 행에 나올 수 있도록 해보세요. (hint: flex) */}
-        {users.map((user) => {
+        {/* {users.map((user) => {
           return (
             <li
               key={user.id}
@@ -66,7 +66,46 @@ function App() {
               <button onSubmit={removeUser(user.id)}>삭제</button>
             </li>
           );
+        })} */}
+        {users.map((user) => {
+          return (
+            <li
+              key={user.id}
+              style={{
+                listStyle: "none",
+                display: "flex",
+                justifyContent: "center",
+                gap: "10px",
+                border: "1px solid black",
+                padding: "0",
+                alignItems: "center",
+              }}
+            >
+              <div>이름: {user.name}</div>
+              <div>나이: {user.age}</div>
+              <button
+                style={{
+                  height: "56px",
+                }}
+                onClick={() => {
+                  removeUser(user.id);
+                }}
+              >
+                삭제
+              </button>
+            </li>
+          );
         })}
+        {/* {users.map((user) => {
+          return (
+            <li key={user.id}>
+              <p>
+                이름: {user.name} 나이: {user.age}
+              </p>
+              <button onClick={removeUser(user.id)}>삭제</button>
+            </li>
+          );
+        })} */}
       </ul>
     </>
   );
